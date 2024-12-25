@@ -1,0 +1,13 @@
+# Build and lib folders
+**/target
+
+# Log and enviroment files
+**/*.log
+**/*.env
+
+# All files/folders when start for .
+**/.**
+# Allowed files/folders
+!.gitignore
+
+# Dependencies of repositories

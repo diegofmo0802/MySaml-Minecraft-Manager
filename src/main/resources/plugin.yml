@@ -1,0 +1,3 @@
+name: manager
+main: com.mysaml.mc.manager.Main
+version: 1.0.0
