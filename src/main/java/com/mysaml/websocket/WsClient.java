@@ -60,7 +60,7 @@ public abstract class WsClient<RQ extends Object, MSG extends Object> {
         try {
             WsInteraction interaction = gson.fromJson(message, WsInteraction.class);
             if (!validateInteraction(interaction)) {
-                onError("Invalid interaction");
+                onError("Invalid interaction: " + message);
                 return;
             }
             switch (interaction.type) {
@@ -76,7 +76,7 @@ public abstract class WsClient<RQ extends Object, MSG extends Object> {
     }
     private boolean validateInteraction(WsInteraction interaction) {
         if (interaction.type == null) return false;
-        if (interaction.type != "message" && interaction.uid == null)  return false;
+        if (interaction.type.equals("message") && interaction.uid == null)  return false;
         if (interaction.data == null) return false;
         return true;
     }
