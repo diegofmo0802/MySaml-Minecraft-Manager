@@ -25,7 +25,26 @@ public class Remote extends WsClient<Request, Message> {
     }
     @Override
     public void onMessage(Message message) {
-        System.out.println(message);
+        switch (message.type) {
+            case "source": sourceHandler(message.data); break;
+            default: System.out.println(message); break;
+        }
+    }
+    private void sourceHandler(Map<String, Object> data) {
+        try {
+            String source = (String) data.get("source");
+            switch (source) {
+                case "chat-private-message": sourcePrivateMessageHandler(data); break;
+                default: System.out.println(data); break;
+            }
+        } catch (Exception e) {
+            System.out.println(data);
+        }
+    }
+    private void sourcePrivateMessageHandler(Map<String, Object> data) {
+        String player = (String) data.get("player");
+        String message = (String) data.get("message");
+        PlayerManager.sendMessage(player, message);
     }
     private void serverInfoHandler(WsRequest<Request> request) {
         Map<String, Object> response = new HashMap<>();
