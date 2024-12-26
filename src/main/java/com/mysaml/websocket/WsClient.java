@@ -76,7 +76,7 @@ public abstract class WsClient<RQ extends Object, MSG extends Object> {
     }
     private boolean validateInteraction(WsInteraction interaction) {
         if (interaction.type == null) return false;
-        if (interaction.type.equals("message") && interaction.uid == null)  return false;
+        if (!interaction.type.equals("message") && interaction.uid == null)  return false;
         if (interaction.data == null) return false;
         return true;
     }
