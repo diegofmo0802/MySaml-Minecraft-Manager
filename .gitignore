@@ -1,5 +1,6 @@
 # Build and lib folders
 **/target
+/*.jar
 
 # Log and enviroment files
 **/*.log
