@@ -9,6 +9,7 @@ public class ServerManager {
         info.motd = Bukkit.getServer().getMotd();
         info.version = Bukkit.getServer().getVersion();
         info.maxPlayers = Bukkit.getServer().getMaxPlayers();
+        info.onlinePlayers = Bukkit.getServer().getOnlinePlayers().size();
         return info;
     }
 }
